@@ -16,9 +16,10 @@ const [loading,setLoading] = useState(false);
     setLoading(false)
 
   };
+  console.log(prompts.slug)
 
   const handleDelete = async (promptId) => {
-    const response = await fetch(`/api/prompt/${promptId}`, {
+    const response = await fetch(`/api/prompt/delete/${promptId}`, {
       method: "DELETE",
     });
 

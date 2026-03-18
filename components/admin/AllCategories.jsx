@@ -14,11 +14,12 @@ const AllCategories = () => {
     const response = await fetch("/api/category");
     const data = await response.json();
     setCategories(data.categories || []);
+    console.log(data.categories)
     setLoading(false);
   };
 
   const handleDelete = async (categoryId) => {
-    const response = await fetch(`/api/category/${categoryId}`, {
+    const response = await fetch(`/api/admin/category/${categoryId}`, {
       method: "DELETE",
     });
 

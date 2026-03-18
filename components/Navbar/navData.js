@@ -3,8 +3,6 @@ import {
   Home,
   Info,
   Phone,
-
-  User,
 } from "lucide-react";
 export const navLinks = [
   {
@@ -26,10 +24,5 @@ export const navLinks = [
     name: "Contact",
     icon: Phone,
     path: "/contact",
-  },
-   {
-    name: "admin",
-    icon: User,
-    path: "/admin/",
   },
 ];

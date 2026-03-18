@@ -12,6 +12,11 @@ const categorySchema = new mongoose.Schema({
     promptCount:{
         type:Number,
         default:0
+    },
+    slug:{
+        type:String,
+        required:true,
+        unique:true
     }
 },{
     timestamps:true
