@@ -1,5 +1,7 @@
 'use client'
 import { useState,useEffect } from "react";
+import Hero from "../components/Hero";
+import CategoriesSecton from "../components/Category/CategoriesSecton";
 export default function Home() {
    const [allPrompts, setAllPrompts] = useState([]);
 
@@ -21,17 +23,13 @@ export default function Home() {
   }, []);
   
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans ">
-     <div>
-        {allPrompts.map((prompt) => {
-          return (
-            <div key={prompt._id}>
-              <p>{prompt.prompt}</p>
-              <img src={prompt.image} alt="" />
-            </div>
-          );
-        })}
-      </div>
+ <div className="flex min-h-screen w-full items-center flex-col justify-center bg-[#F8F9FA] font-sans ">
+     <section>
+      <Hero/>
+     </section>
+      <section className="w-full">
+        <CategoriesSecton/>
+      </section>
     </div>
   );
 }

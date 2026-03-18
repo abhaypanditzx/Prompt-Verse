@@ -27,7 +27,6 @@ export async function POST(req) {
     const title = formData.get("title");
     const category = formData.get("category");
 
-    console.log(prompt? "prompt is here": "prompt is empty",image? "image is here": "image is empty",title? "title is here": "title is empty",category? "category is here": "category is empty");
     if (!prompt || !image || !title || !category) {
       return NextResponse.json(
         { error: "all fields are required",success:false},
@@ -55,13 +54,36 @@ export async function POST(req) {
     const uploadresult = await cloudinary.uploader.upload(base64image, {
       folder: "prompt-verse",
     });
+// Robust slug generator
+function makeSlug(title) {
+  // Remove emoji and most punctuation while preserving Unicode letters/numbers
+  // Uses Unicode property escapes; requires Node 10+ / modern browsers
+  const cleaned = title
+    // remove emoji and symbols (keeps letters, numbers, spaces, and hyphens)
+    .replace(/\p{Emoji_Presentation}|\p{Extended_Pictographic}|\p{So}/gu, '')
+    // replace any character that is not a letter, number, space or hyphen with empty
+    .replace(/[^\p{L}\p{N}\s-]+/gu, '')
+    // normalize whitespace to single spaces
+    .replace(/\s+/g, ' ')
+    .trim();
 
+  // Turn spaces into hyphens, collapse multiple hyphens, trim hyphens, lowercase
+  const slug = cleaned
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .toLowerCase();
+
+  return slug;
+}
+const promptSlug =await  makeSlug(title)
     // careate prompt 
     const newPrompt = await Prompt.create({
       prompt,
       image: uploadresult.secure_url,
       title,
       category,
+      slug:promptSlug
     });
 
     // increment prompt count 

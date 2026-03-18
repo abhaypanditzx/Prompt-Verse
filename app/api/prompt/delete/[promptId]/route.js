@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import {connectDB} from "../../../../database/db";
-import Prompt from "../../../../models/Prompt";
+import {connectDB} from "../../../../../database/db";
+import Prompt from "../../../../../models/Prompt";
 
 export async function DELETE(req, {params}) {
   try {

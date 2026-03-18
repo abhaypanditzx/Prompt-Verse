@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
-import { connectDB } from "../../../../database/db";
-import Category from "../../../../models/Category";
+import { connectDB } from "../../../../../database/db";
+import Category from "../../../../../models/Category";
 
 export async function DELETE(req, { params }) {
   try {
     await connectDB();
-    const { categoryId } = await params;
+    const { categoryId } =await params;
     const category = await Category.findById(categoryId);
 
     console.log(category);
@@ -27,3 +27,4 @@ export async function DELETE(req, { params }) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
+
