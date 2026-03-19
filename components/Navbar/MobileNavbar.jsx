@@ -4,9 +4,8 @@ import React from 'react'
 const MobileNavbar = ({openSidebar,setOpenSidebar}) => {
   return (
     <div className="sm:hidden flex items-center justify-between px-3 text-black bg-white h-20">
-        <div className="logo text-black border-black border-2 p-2  rounded-full">
-          P
-        </div>
+               <p className=" font-bold font-montserrat text-lg">PromptVerse</p>
+
         {/* toggle button  sidebar open/close */}
         <div className="absolute z-50 top-5 right-5">
           <button

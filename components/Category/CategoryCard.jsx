@@ -3,7 +3,7 @@ import React from 'react'
 
 const CategoryCard = ({category}) => {
   return (
-    <Link href={`/category/${category.slug}`} className='w-40 h-72 hover:shadow-xl  transition-shadow duration-300 bg-white rounded-lg border-gray-300 border-[0.3px] group  flex flex-col  p-4  items-center '>
+    <Link href={`/category/${category.slug}`} className='w-40 h-72 hover:shadow-lg  hover:-translate-y-1 transition-shadow duration-300 bg-white rounded-lg border-gray-300 border-[0.3px]   flex flex-col  p-4  items-center '>
 <div className='pb-5'>
     <div className='h-44 w-32    rounded-lg border-gray-300 border-[0.3px]  '>
 <img src={category.image} alt={category.name}  className='object-cover  h-full w-full'/>

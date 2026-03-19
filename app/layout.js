@@ -1,4 +1,4 @@
-import { Inter,Poppins } from "next/font/google";
+import { Inter,Poppins,Montserrat } from "next/font/google";
 
 import "./globals.css";
 import Navbar from "../components/Navbar/Navbar";
@@ -18,6 +18,12 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight:["400","500","600","700"],
+  variable: "--font-montserrat",
+});
+
 export const metadata = {
   title: "PromptVerse",
   description: "PromptVerse - AI Powered Prompt Generator",
@@ -25,13 +31,13 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
 
-  const cookiesStore=  await cookies();
+  const cookiesStore = await cookies();
 
   const token = cookiesStore.get("token")?.value;
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${poppins.variable} antialiased`}
+        className={`${inter.variable} ${poppins.variable} ${montserrat.variable}  antialiased`}
       >
         {!token && <Navbar />}
         {children}

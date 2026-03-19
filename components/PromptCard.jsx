@@ -44,14 +44,15 @@ const PromptCard = ({ prompt }) => {
         <h6 className="text-lg font-bold text-black">
           {prompt?.title?.substring(0, 30) + "..."}
         </h6>
-        <p className="text-gray-600 font-inter font-medium text-sm">
+        <p className="text-gray-600  font-medium text-sm">
           {prompt?.prompt?.substring(0, 80) + "...."}
         </p>
+
         <div className="flex flex-row justify-between pt-4">
-          <span className=" font-inter font-medium text-sm  bg-blue-100 text-blue-400 w-fit px-2 py-1 rounded-full">
+          <span className="  font-medium text-sm  bg-blue-100 text-blue-400 w-fit px-2 py-1 rounded-full">
             {prompt?.category?.title}
           </span>
-          <div className=" text-blue-600 font-inter text-sm md:text-base font-semibold flex items-center gap-0  md:gap-2  ">
+          <div className=" text-blue-600  text-sm md:text-base font-semibold flex items-center gap-0  md:gap-2  ">
             <span>View Prompt</span> <ChevronRight />
           </div>
         </div>

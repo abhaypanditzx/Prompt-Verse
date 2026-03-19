@@ -2,6 +2,7 @@ import {
   Briefcase,
   Home,
   Info,
+  BookImage,
   Phone,
 } from "lucide-react";
 export const navLinks = [
@@ -15,14 +16,15 @@ export const navLinks = [
     icon: Briefcase,
     path: "/prompts",
   },
-  {
+
+  // {
+  //   name: "Blog",
+  //   icon: BookImage,
+  //   path: "/blog",
+  // },
+    {
     name: "About",
     icon: Info,
     path: "/about",
-  },
-  {
-    name: "Contact",
-    icon: Phone,
-    path: "/contact",
   },
 ];

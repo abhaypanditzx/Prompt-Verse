@@ -41,7 +41,7 @@ const AdminSidebar = () => {
       >
         {/* Title */}
 
-        <div className="text-2xl font-bold py-8 px-6 border-b [font-family:var(--font-poppins)]">
+        <div className="text-2xl font-bold py-8 px-6 border-b heading-font">
           DASHBOARD
         </div>
 
@@ -57,7 +57,7 @@ const AdminSidebar = () => {
             >
               <link.icon size={18} />
 
-              <span className="[font-family:var(--font-inter)]">{link.name}</span>
+              <span >{link.name}</span>
             </Link>
           ))}
         </div>
@@ -67,7 +67,7 @@ const AdminSidebar = () => {
         <div className="absolute bottom-0 left-0 w-full">
           <button
             onClick={handleLogout}
-            className="px-6 py-4 flex font-sans items-center gap-2 w-full hover:bg-red-50 hover:text-red-600 transition"
+            className="px-6 py-4 flex items-center gap-2 w-full hover:bg-red-50 hover:text-red-600 transition"
           >
             <LogOut size={18} />
             Logout
