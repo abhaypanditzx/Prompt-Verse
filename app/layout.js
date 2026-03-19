@@ -4,8 +4,14 @@ import "./globals.css";
 import Navbar from "../components/Navbar/Navbar";
 import {Toaster} from "react-hot-toast"
 import { cookies } from "next/headers";
+import Script from "next/script";
 
-
+<Script
+  async
+  strategy="afterInteractive"
+  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8109343075563496"
+  crossOrigin="anonymous"
+/>
 
 const inter = Inter({
   subsets: ["latin"],
@@ -36,6 +42,10 @@ export default async function RootLayout({ children }) {
   const token = cookiesStore.get("token")?.value;
   return (
     <html lang="en">
+      <head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8109343075563496"
+     crossorigin="anonymous"></script>
+      </head>
       <body
         className={`${inter.variable} ${poppins.variable} ${montserrat.variable}  antialiased`}
       >
