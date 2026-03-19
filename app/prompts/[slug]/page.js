@@ -6,25 +6,37 @@ import React, { useState, useEffect } from "react";
 import CopyPrompt from "../../../components/promptDetailsPageComponent/CopyPrompt";
 import RelatedPrompts from "../../../components/promptDetailsPageComponent/RelatedPrompts";
 import ImageContainer from "../../../components/promptDetailsPageComponent/ImageContainer";
+import Loading from "../../../components/Loading";
 const PromptPage = () => {
   const { slug } = useParams();
   const [prompt, setPrompt] = useState(null);
   const [copyPrompt, setCopyPrompt] = useState(false);
-  const getPrompDetails = async () => {
+  const [loading,setLoading] =  useState(false)
+  // fetching single prompt detail 
+  const getPromptDetails = async () => {
     try {
-      const data = await fetch(`/api/prompt/${slug}`);
-      const res = await data.json();
-      setPrompt(res);
+      setLoading(true)
+      const   res = await fetch(`/api/prompt/${slug}`);
+      if (!res.ok) throw new Error("Failed to fetch");
+      const data = await res.json();
+      setPrompt(data);
     } catch (error) {
       console.log(error);
     }
+    finally{
+      setLoading(false)
+    }
   };
+  // fetching single prompt detail 
   useEffect(() => {
-    getPrompDetails();
+    if(!slug)return;
+    getPromptDetails();
   }, [slug]);
 
+  // copy prompt to clipboard
   const handleCopyPrompt = async () => {
     try {
+      if (!prompt?.prompt) return;
       await navigator.clipboard.writeText(prompt.prompt);
       setCopyPrompt(true);
       setTimeout(() => {
@@ -35,6 +47,7 @@ const PromptPage = () => {
     }
   };
 
+  // previous routes
   const previousRoutes = [
     { path: "/", title: "Home" },
     { path: "/prompts", title: "Prompt" },
@@ -42,7 +55,11 @@ const PromptPage = () => {
   ];
   return (
     <div className="p-4 md:p-6 bg-[#F8F9FA]">
-      {prompt && (
+      {loading ? <Loading/> : !prompt ?(
+        <div className="flex flex-col items-center justify-center h-screen">
+          <h1 className="text-3xl font-semibold text-center [font-family:var(--heading-font)]">Prompt not found</h1>
+        </div>
+      ) :(
         // container 
         <div className="flex flex-col">
           {/* previous routes */}
@@ -62,10 +79,10 @@ const PromptPage = () => {
           </div>
           {/* title and category tag  */}
           <div className="md:pb-8 pb-4 border-b border-gray-200">
-            <h1 className="md:text-3xl text-2xl font-poppins font-bold ">
+            <h1 className="md:text-3xl text-2xl heading-font font-bold ">
               {prompt?.title}
             </h1>
-            <p className=" font-inter font-semibold text-sm md:text-base  bg-blue-100 text-blue-500 w-fit px-2 py-1 rounded-full">
+            <p className=" font-inter font-semibold text-sm md:text-base  mt-2 bg-blue-100 text-blue-500 w-fit px-2 py-1 rounded-full">
               {prompt?.category?.title}
             </p>
           </div>

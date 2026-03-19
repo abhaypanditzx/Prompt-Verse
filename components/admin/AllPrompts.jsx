@@ -1,5 +1,4 @@
 "use client";
-import { ChevronDown } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import PromptCard from "./PromptCard";
 import Loading from "../Loading";
@@ -32,7 +31,7 @@ const AllPrompts = () => {
 
   return (
     <div className="space-y-4">
-      <h1 className="text-3xl font-semibold text-center [font-family:var(--font-poppins)]">
+      <h1 className="text-3xl font-semibold text-center [font-family:var(--heading-font)]">
         All Prompts
       </h1>
 

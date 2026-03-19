@@ -12,17 +12,17 @@ const Navbar = () => {
   return (
     <div className="sticky top-0 left-0 z-50">
       {/* big screen */}
-      <div className="sm:flex hidden items-center justify-between   border-b-2 border-gray-200  px-22 bg-white h-20">
-        <div className="logo text-black border-black border-2 p-2  rounded-full">
-          P
-        </div>
+      <div className="sm:flex hidden items-center justify-between border-b-2 border-gray-200 shadow-md  px-22 bg-white h-20">
+        <Link href="/" className="logo p-2  rounded-full">
+          <p className={`heading-font font-bold text-lg logo-font`}>PromptVerse</p>
+        </Link>
         <div className="relative">
           <div className="max-w-7xl  flex items-center gap-x-10 ">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 href={link.path}
-                className="flex items-center gap-1 text-gray-900 font-medium hover:text-blue-500"
+                className="flex items-center  gap-1 text-gray-900  font-(--font-inter) hover:text-blue-500"
               >
                 {link.name}
               </Link>

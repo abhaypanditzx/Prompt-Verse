@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Hero from "../components/Hero";
 import CategoriesSecton from "../components/Category/CategoriesSecton";
+import LatestPrompt from "../components/LatestPrompt";
 export default function Home() {
   const [allPrompts, setAllPrompts] = useState([]);
 
@@ -23,12 +24,13 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen w-full items-center flex-col justify-center bg-[#F8F9FA] font-sans ">
-      <section>
+      <section className="w-full">
         <Hero />
       </section>
       <section className="w-full">
         <CategoriesSecton/>
       </section>
+        <LatestPrompt/>
     </div>
   );
 }

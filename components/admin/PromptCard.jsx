@@ -17,11 +17,11 @@ const PromptCard = ({prompt,setOpenMenu,openMenu,handleDelete,setOpenPrompt,open
             {/* Text */}
 
             <div className="flex-1">
-              <p className="font-normal text-gray-600">
+              <p className="font-normal text-gray-600 heading-font">
                 <span className="text-black font-semibold">TITLE: </span>
                 {prompt.title}
               </p>
-              <p className="font-normal text-gray-600">
+              <p className="font-normal text-gray-600 heading-font">
                 <span className="text-black font-semibold">CATEGORY:</span>
                 {prompt.category?.title}
               </p>

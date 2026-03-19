@@ -21,7 +21,7 @@ const RelatedPrompts = () => {
   return (
     <div className="bg-white felx flex-col p-4 rounded-xl ">
       <div className="md:pb-8 pb-4 border-b   border-gray-200">
-        <h1 className="md:text-3xl text-2xl font-poppins font-bold ">
+        <h1 className="md:text-3xl text-2xl heading-font font-bold ">
           Related Prompts
         </h1>
       </div>
