@@ -5,8 +5,8 @@ import { NextResponse } from "next/server";
 export async function GET(req, { params }) {
   try {
     await connectDB();
-    const {slug} =await params;
-    const prompt = await Prompt.findOne({slug:slug}).populate("category","title")
+    const {slug} = await params;
+    const prompt = await Prompt?.findOne({slug:slug}).populate("category","title")
     return NextResponse.json(prompt)
   } catch (error) {
     console.log(error);

@@ -1,9 +1,9 @@
-'use client'
-import { useState,useEffect } from "react";
+"use client";
+import { useState, useEffect } from "react";
 import Hero from "../components/Hero";
 import CategoriesSecton from "../components/Category/CategoriesSecton";
 export default function Home() {
-   const [allPrompts, setAllPrompts] = useState([]);
+  const [allPrompts, setAllPrompts] = useState([]);
 
   useEffect(() => {
     const fetchPrompts = async () => {
@@ -11,7 +11,6 @@ export default function Home() {
         const res = await fetch("/api/prompt");
 
         const data = await res.json();
-        console.log(data)
 
         setAllPrompts(data.prompts);
       } catch (error) {
@@ -21,12 +20,12 @@ export default function Home() {
 
     fetchPrompts();
   }, []);
-  
+
   return (
- <div className="flex min-h-screen w-full items-center flex-col justify-center bg-[#F8F9FA] font-sans ">
-     <section>
-      <Hero/>
-     </section>
+    <div className="flex min-h-screen w-full items-center flex-col justify-center bg-[#F8F9FA] font-sans ">
+      <section>
+        <Hero />
+      </section>
       <section className="w-full">
         <CategoriesSecton/>
       </section>
