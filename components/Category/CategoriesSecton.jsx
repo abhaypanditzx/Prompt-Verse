@@ -2,8 +2,9 @@
 import React, { useState, useEffect } from "react";
 import CategoryCard from "./CategoryCard";
 import PromptLoadingCardDisplay from "../promptLoadingCardDisplay";
+import AdComponent from "../AdComponent";
 const CategoriesSecton = () => {
-  const [Categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
   const getCategories = async () => {
     try {
@@ -26,6 +27,8 @@ const CategoriesSecton = () => {
 
   return (
     <div className="w-full bg-white ">
+
+
       <div className="flex flex-col items-center p-4 md:p-8 justify-start">
         <h1 className="text-3xl md:text-5xl heading-font text-center md:text-left  font-bold  pb-2 md:pb-4 text-black">
           Browse by Category
@@ -34,17 +37,19 @@ const CategoriesSecton = () => {
           Find the perfect style for your next masterpiece.
         </p>
       </div>
+<AdComponent/>
       <div className="flex  flex-row  overflow-x-scroll items-center gap-4 p-6 scrollbar-hide  md:p-12 justify-start w-full">
         
         {loading?  Array(2).fill(0).map((_,index)=>(
           <PromptLoadingCardDisplay key={index}/>
         ))
-        :Categories.map((category) =>
+        :categories.map((category) =>
          (
             <CategoryCard key={category._id} category={category} />
           )
         )}
       </div>
+ 
     </div>
   );
 };
