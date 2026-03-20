@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar/Navbar";
 import {Toaster} from "react-hot-toast"
 import { cookies } from "next/headers";
 import Script from "next/script";
+import Footer from "../components/Footer/Footer";
 
 <Script
   async
@@ -52,6 +53,7 @@ export default async function RootLayout({ children }) {
         {!token && <Navbar />}
         {children}
         <Toaster/>
+        <Footer/>
       </body>
     </html>
   );
