@@ -7,78 +7,75 @@ import Link from "next/link";
 import { ChevronRight, LogOut } from "lucide-react";
 
 const AdminSidebar = () => {
-  const [openSidebar, setOpenSidebar] = useState(true);
+  const [openSidebar, setOpenSidebar] = useState(false);
   const router = useRouter();
 
   const handleLogout = async () => {
-    const response = await fetch("/api/admin/logout", {
-      method: "POST",
-    });
-
-    if (response.ok) {
-      router.push("/admin/login");
-    }
+    const res = await fetch("/api/admin/logout", { method: "POST" });
+    if (res.ok) router.push("/admin/login");
   };
-  console.log("isopen", openSidebar);
 
   return (
-    <div className="relative">
-      {/* Mobile Toggle Button */}
-
+    <>
+      {/* Mobile Toggle */}
       <button
         onClick={() => setOpenSidebar(!openSidebar)}
-        className="absolute top-4 left-4 z-50 sm:hidden"
+        className="sm:hidden fixed top-4 left-4 z-50 bg-white p-2 rounded-md shadow"
       >
         <ChevronRight className={`${openSidebar ? "rotate-180" : ""}`} />
       </button>
 
-      {/* Sidebar */}
+      {/* Overlay (mobile) */}
+      {openSidebar && (
+        <div
+          onClick={() => setOpenSidebar(false)}
+          className="fixed inset-0 bg-black/40 z-40 sm:hidden"
+        />
+      )}
 
-      <div
-        className={`fixed sm:static  top-0 left-0 h-screen w-64 z-40  bg-white text-gray-800 shadow-md transition-transform duration-300
-        ${openSidebar ? "translate-x-0" : "-translate-x-full"} 
+      {/* Sidebar */}
+      <aside
+        className={`fixed sm:static top-0 left-0 h-screen w-64 bg-white shadow-md z-50
+        transform transition-transform duration-300
+        ${openSidebar ? "translate-x-0" : "-translate-x-full"}
         sm:translate-x-0`}
       >
-        {/* Title */}
-
-        <div className="text-2xl font-bold py-8 px-6 border-b heading-font">
-          DASHBOARD
+        {/* Header */}
+        <div className="text-xl font-bold px-6 py-6 border-b heading-font">
+          Dashboard
         </div>
 
         {/* Links */}
-
-        <div className="flex flex-col">
+        <nav className="flex flex-col mt-2">
           {sidebarLinks.map((link) => (
             <Link
               key={link.name}
               href={link.path}
               onClick={() => setOpenSidebar(false)}
-              className="px-6 py-4 flex gap-x-2 items-center  hover:bg-blue-500/10 transition"
+              className="px-6 py-3 flex items-center gap-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition"
             >
               <link.icon size={18} />
-
-              <span >{link.name}</span>
+              <span>{link.name}</span>
             </Link>
           ))}
-        </div>
+        </nav>
 
         {/* Footer */}
-
-        <div className="absolute bottom-0 left-0 w-full">
+        <div className="absolute bottom-0 w-full border-t">
           <button
             onClick={handleLogout}
-            className="px-6 py-4 flex items-center gap-2 w-full hover:bg-red-50 hover:text-red-600 transition"
+            className="w-full px-6 py-3 flex items-center gap-2 hover:bg-red-50 hover:text-red-600 transition"
           >
             <LogOut size={18} />
             Logout
           </button>
 
-          <p className="text-center text-gray-400 text-sm pb-4">
+          <p className="text-center text-gray-400 text-xs py-2">
             © 2026 PromptVerse
           </p>
         </div>
-      </div>
-    </div>
+      </aside>
+    </>
   );
 };
 

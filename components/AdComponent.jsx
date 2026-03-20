@@ -1,28 +1,32 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function AdComponent() {
   const adRef = useRef(null);
+  const [showAd, setShowAd] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && adRef.current) {
-          try {
-            (window.adsbygoogle = window.adsbygoogle || []).push({});
-            observer.disconnect();
-          } catch (e) {
-            console.log(e);
-          }
+    const interval = setInterval(() => {
+      if (
+        adRef.current &&
+        adRef.current.offsetWidth > 0 &&
+        window.adsbygoogle
+      ) {
+        try {
+          window.adsbygoogle.push({});
+          setShowAd(true); // 👈 show only after push
+          clearInterval(interval);
+        } catch (e) {
+          console.log(e);
         }
-      },
-      { threshold: 0.1 }
-    );
+      }
+    }, 300);
 
-    if (adRef.current) observer.observe(adRef.current);
-
-    return () => observer.disconnect();
+    return () => clearInterval(interval);
   }, []);
+
+  // ❌ Don't render anything if no ad
+  if (!showAd) return null;
 
   return (
     <div className="my-8 w-full max-w-6xl mx-auto flex justify-center">

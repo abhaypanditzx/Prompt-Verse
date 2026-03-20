@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 const AddcateogryForm = () => {
-
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
   const [title, setTitle] = useState("");
@@ -26,7 +26,11 @@ const AddcateogryForm = () => {
     });
 
     const data = await response.json();
-    console.log(data);
+    if (data.success) {
+      toast.success(data.message);
+    } else {
+      toast.error(data.message);
+    }
 
     setImage(null);
     setPreview(null);
@@ -43,22 +47,16 @@ const AddcateogryForm = () => {
   };
 
   return (
-
     <div className="flex justify-center items-center min-h-screen bg-gray-50">
-
       <form
         onSubmit={handleSubmit}
         className="bg-white p-8 rounded-xl w-[320px] sm:w-[500px] lg:w-[600px] shadow-lg flex flex-col gap-5"
       >
-
-        <h2 className="text-2xl font-semibold text-center">
-          Add cateogry
-        </h2>
+        <h2 className="text-2xl font-semibold text-center">Add cateogry</h2>
 
         {/* Image Upload */}
 
         <div className="h-48 w-48 border-2 border-dashed border-gray-300 rounded-lg relative flex justify-center items-center mx-auto cursor-pointer hover:border-blue-400 transition">
-
           {preview ? (
             <img
               src={preview}
@@ -74,7 +72,6 @@ const AddcateogryForm = () => {
             className="absolute inset-0 opacity-0 cursor-pointer"
             onChange={handleImageChange}
           />
-
         </div>
 
         {/* Title */}
@@ -98,11 +95,8 @@ const AddcateogryForm = () => {
         >
           Add cateogry
         </button>
-
       </form>
-
     </div>
-
   );
 };
 

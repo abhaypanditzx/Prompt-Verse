@@ -6,15 +6,21 @@ export default async function AdminLayout({ children }) {
   const token = cookiesStore.get("token");
 
   return (
-    <div className="flex min-h-screen ">
+    <div className=" max-h-screen overflow-y-hidden min-h-screen flex bg-[#F2F4F7]">
 
       {/* Sidebar */}
-      {token && <AdminSidebar />}
+      {token && (
+        <div className="w-64 hidden sm:block">
+          <AdminSidebar />
+        </div>
+      )}
 
-      {/* Content */}
-      <main className={`flex-1 ${token ? "p-6" : ""} overflow-hidden relative bg-[#F2F4F7]`}>
-        {children}
-      </main>
+      {/* Main Content */}
+  <main className="flex-1 p-4 md:p-8 overflow-y-auto bg-[#F2F4F7]">
+  <div className="max-w-4xl mx-auto w-full">
+    {children}
+  </div>
+</main>
 
     </div>
   );

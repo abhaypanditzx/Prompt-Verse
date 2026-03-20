@@ -53,7 +53,9 @@ export default async function RootLayout({ children }) {
         {!token && <Navbar />}
         {children}
         <Toaster/>
-        <Footer/>
+        {
+         !token && <Footer/>
+        }
       </body>
     </html>
   );
