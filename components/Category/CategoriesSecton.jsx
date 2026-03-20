@@ -1,8 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import CategoryCard from "./CategoryCard";
-import PromptLoadingCardDisplay from "../promptLoadingCardDisplay";
 import AdComponent from "../AdComponent";
+import CategoryCardSkeleton from "../CategorySkeleton";
 const CategoriesSecton = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -29,7 +29,7 @@ const CategoriesSecton = () => {
 <div className="w-full bg-white">
 
   {/* Heading */}
-  <div className="flex flex-col items-center p-4 md:p-8">
+  <div className="flex flex-col items-center text-start p-4 md:p-8">
     <h1 className="text-3xl md:text-5xl heading-font font-bold text-black pb-2">
       Browse by Category
     </h1>
@@ -44,8 +44,8 @@ const CategoriesSecton = () => {
   {/* Categories */}
   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 p-6 md:p-12 w-fit">
     {loading
-      ? Array(6).fill(0).map((_, i) => (
-          <PromptLoadingCardDisplay key={i} />
+      ? Array(4).fill(0).map((_, i) => (
+          <CategoryCardSkeleton key={i} />
         ))
       : categories.map((category) => (
           <CategoryCard key={category._id} category={category} />

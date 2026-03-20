@@ -30,6 +30,7 @@ const PromptCard = ({ prompt }) => {
   }
   return (
     <Link
+    
       href={`/prompts/${makeSlug(prompt?.title)}`}
       className="flex flex-col items-center sm:w-72  w-full shadow-xl group"
     >

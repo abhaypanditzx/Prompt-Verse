@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import PromptCard from "../../components/PromptCard";
 import PromptLoadingCardDisplay from "../../components/promptLoadingCardDisplay";
+import AdComponent from "../../components/AdComponent";
 const Prompts = () => {
   const [prompts, setPrompts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -27,13 +28,22 @@ const Prompts = () => {
   }, []);
   return (
     <div className="p-4 md:p-6 h-full bg-[#F8F9FA]">
-      <div className="flex items-center flex-wrap gap-6 ">
-        {prompts.map((prompt) =>
-          loading ? (
-              <PromptLoadingCardDisplay/>
+      <div className="flex flex-col items-center text-start p-4 md:p-8">
+        <h1 className="text-3xl md:text-5xl heading-font font-bold text-black pb-2">
+          All Prompts
+        </h1>
+        <p className="text-gray-500 text-sm md:text-lg text-center max-w-xl">
+          Master the art of AI with our latest tutorials and prompt collections.
+        </p>
+      </div>
+      <AdComponent/>
+      <div className="flex justify-start  flex-wrap gap-4 w-full ">
+        {loading ? (
+          <PromptLoadingCardDisplay />
         ) : (
-            <PromptCard key={prompt._id} prompt={prompt} /> 
-          ),
+          prompts.map((prompt) => (
+            <PromptCard key={prompt._id} prompt={prompt} />
+          ))
         )}
       </div>
     </div>
