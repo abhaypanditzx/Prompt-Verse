@@ -11,7 +11,7 @@ export async function GET(req) {
     .populate("category", "title")
     .sort({ createdAt: -1 });
 
-  return NextResponse.json({ prompts });
+  return NextResponse.json({ prompts});
 }
 
 // create prompt
