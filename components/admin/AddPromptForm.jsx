@@ -71,10 +71,9 @@ const AddPromptForm = () => {
       setPreview(URL.createObjectURL(file));
     }
   };
-  console.log(category)
 
   return (
-    <div className="flex justify-center items-center min-h-screen">
+    <div className="flex justify-center items-center">
       <form
         onSubmit={handleSubmit}
         className="bg-white p-8 rounded-xl w-[320px] sm:w-[500px] lg:w-[600px] shadow-lg flex flex-col gap-5"

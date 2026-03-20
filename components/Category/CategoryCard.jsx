@@ -2,6 +2,8 @@ import Link from 'next/link'
 import React from 'react'
 
 const CategoryCard = ({category}) => {
+  console.log(category);
+  
   return (
     <Link href={`/category/${category.slug}`} className='w-40 h-72 hover:shadow-lg  hover:-translate-y-1 transition-shadow duration-300 bg-white rounded-lg border-gray-300 border-[0.3px]   flex flex-col  p-4  items-center '>
 <div className='pb-5'>
