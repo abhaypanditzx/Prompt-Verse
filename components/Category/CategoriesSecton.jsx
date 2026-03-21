@@ -1,14 +1,18 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import CategoryCard from "./CategoryCard";
-import AdComponent from "../AdComponent";
-import CategoryCardSkeleton from "../CategorySkeleton";
+import dynamic from "next/dynamic";
+const CategoryCardSkeleton = dynamic(() => import("../CategorySkeleton"))
+const CategoryCard = dynamic(()=> import("./CategoryCard"),{
+  loading:()=> <CategoryCardSkeleton/>
+})
+const AdComponent = dynamic(() => import("../AdComponent"), {
+  ssr: false,
+});
 const CategoriesSecton = () => {
   const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const getCategories = async () => {
     try {
-      setLoading(true);
       const res = await fetch("/api/category", {
         method: "GET"
       });
