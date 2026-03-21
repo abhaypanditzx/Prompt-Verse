@@ -1,15 +1,21 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import PromptCard from "../../components/PromptCard";
 import PromptLoadingCardDisplay from "../../components/promptLoadingCardDisplay";
-import AdComponent from "../../components/AdComponent";
+import dynamic from "next/dynamic";
+const  PromptCard = dynamic(()=> import( "../../components/PromptCard"),{
+  loading:()=> <PromptLoadingCardDisplay/>
+})
+
+const AdComponent = dynamic(() => import("../../components/AdComponent"), {
+  ssr: false,
+});
+
 const Prompts = () => {
   const [prompts, setPrompts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const getAllPrompts = async () => {
     try {
-      setLoading(true);
       const data = await fetch("/api/prompt", {
         method: "GET",
         headers: {
@@ -39,7 +45,7 @@ const Prompts = () => {
       <AdComponent/>
       <div className="flex justify-start  flex-wrap gap-4 w-full ">
         {loading ? (
-          <PromptLoadingCardDisplay />
+          Array(8).fill(0).map((_,i)=>(<PromptLoadingCardDisplay key={i}/>))
         ) : (
           prompts.map((prompt) => (
             <PromptCard key={prompt._id} prompt={prompt} />
