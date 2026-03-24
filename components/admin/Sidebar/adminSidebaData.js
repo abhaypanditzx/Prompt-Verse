@@ -6,6 +6,7 @@ import {
   Images,
   PlusSquare,
   GalleryVerticalEnd,
+  ImagePlus,
 } from "lucide-react";
 export const sidebarLinks = [
   {
@@ -15,7 +16,7 @@ export const sidebarLinks = [
   },
   {
     name: "Create Prompt",
-    icon: Plus,
+    icon: ImagePlus,
     path: "/admin/prompt/create",
   },
   {
@@ -32,5 +33,15 @@ export const sidebarLinks = [
     name: " All Categories",
     icon: GalleryVerticalEnd,
     path: "/admin/category/all",
+  },
+  {
+    name: "Create Blog",
+    icon: Plus,
+    path: "/admin/blog/create",
+  },
+  {
+    name: "All Blogs",
+    icon: Images,
+    path: "/admin/blog/all",
   },
 ];

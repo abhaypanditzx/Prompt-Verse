@@ -17,11 +17,11 @@ export const navLinks = [
     path: "/prompts",
   },
 
-  // {
-  //   name: "Blog",
-  //   icon: BookImage,
-  //   path: "/blog",
-  // },
+  {
+    name: "Blog",
+    icon: BookImage,
+    path: "/blog",
+  },
     {
     name: "About",
     icon: Info,
