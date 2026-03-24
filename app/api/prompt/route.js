@@ -15,9 +15,6 @@ export async function GET(req) {
 }
 
 // create prompt
-
-// add this later =>>>
-
 export async function POST(req) {
   try {
     await connectDB();

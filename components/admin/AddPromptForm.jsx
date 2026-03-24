@@ -52,8 +52,8 @@ const AddPromptForm = () => {
     const data = await response.json();
     if(data.success){
       setPrompt("");
-      setImage(null);
-      setPreview(null);
+      setImage("");
+      setPreview("");
       setTitle("");
       setCategory("");
       toast.success(data.message)
