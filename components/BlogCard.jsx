@@ -5,7 +5,6 @@ import React from "react";
 import Image from "next/image";
 
 const BlogCard = ({ Blog }) => {
-    console.log(Blog)
   function makeSlug(title) {
     if (!title) return "";
 

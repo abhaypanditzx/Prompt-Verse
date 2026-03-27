@@ -88,7 +88,6 @@ const PromptPage = () => {
           </div>
           {/* main content */}
           <div className="flex flex-col md:justify-between gap-4 md:flex-row">
-
           <div className="flex flex-col md:flex-row gap-4 md:pt-8 pt-4">
             <ImageContainer prompt={prompt} />
             <CopyPrompt

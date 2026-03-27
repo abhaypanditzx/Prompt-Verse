@@ -28,7 +28,7 @@ export async function POST(req){
 export async function GET(req){
     await connectDB();
     try {
-        const categories = await Category.find();
+        const categories = await Category.find().sort({createdAt:-1})
         return NextResponse.json({categories}, {status:200});
     } catch (error) {
         return NextResponse.json({error:error.message}, {status:500});

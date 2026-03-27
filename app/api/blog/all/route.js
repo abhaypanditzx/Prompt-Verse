@@ -6,11 +6,11 @@ export async function GET(){
         connectDB();
         const blogs =  await blog.find();
         if(!blogs){
-            return NextResponse.json({message:"No blogs found"},{status:404})
+            return NextResponse.json({message:"No blogs found",success:false},{status:404})
         }
-        return NextResponse.json({blogs},{status:200})
+        return NextResponse.json({blogs,success:true},{status:200})
     } catch (error) {
-        return NextResponse.json({message:"Internal server error"},{status:500})
+        return NextResponse.json({message:"Internal server error",success:false},{status:500})
     }
 
 }

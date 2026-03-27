@@ -27,7 +27,7 @@ const CategoryPage = () => {
   }, [slug]);
  
   return (
-    <div className='p-4 md:p-6'>
+    <div className='p-4 md:p-6 bg-[#F8F9FA]'>
       <h1 className='text-2xl font-bold text-black mb-6 capitalize'>{slug} Prompts</h1>
      <div className='flex items-center flex-wrap gap-6  w-full '>
       {

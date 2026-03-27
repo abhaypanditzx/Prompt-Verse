@@ -30,7 +30,7 @@ const RelatedPrompts = () => {
           return (
             <Link
               href={`/prompts/${prompt.slug}`}
-              Key={prompt._id}
+              key={prompt._id}
               className="flex flex-row md:items-start gap-2  py-4"
             >
               <div className="max-h-14 max-w-14 min-h-10 min-w-10 rounded-lg overflow-hidden">

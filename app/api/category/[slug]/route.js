@@ -10,7 +10,7 @@ export async function GET(req, { params }) {
     if (!slug) {
       return NextResponse.json({ error: "Slug not found" }, { status: 404 });
     }
-    const category = await Category.findOne({ slug });
+    const category = await Category.findOne({ slug }).sort({createdAt:-1});
     if (!category) {
       return NextResponse.json(
         { error: "Category not found" },
@@ -18,10 +18,10 @@ export async function GET(req, { params }) {
       );
     }
 
-    // 2. find prompts
+    // 2. find promptsf
     const prompts = await Prompt.find({
       category: category._id,
-    }).populate("category", "title slug");
+    }).populate("category", "title slug").sort({createdAt:-1})
     return NextResponse.json({ prompts });
   } catch (error) {
     console.log(error);
