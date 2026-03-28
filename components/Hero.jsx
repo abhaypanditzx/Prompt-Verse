@@ -1,7 +1,14 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Hero = () => {
+  const [delayedLoading,setDelayedLoading] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setDelayedLoading(true);
+    }, 500);
+
+  }, []);
   return (
     <div className="relative w-full min-h-screen flex items-center justify-center px-4 md:px-10 bg-gradient-to-br from-blue-600 via-blue-500 to-indigo-700">
       
@@ -11,19 +18,19 @@ const Hero = () => {
       <div className="max-w-5xl text-center z-10">
         
         {/* Heading */}
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight text-white mb-6">
+        <h1 className={`text-[32px] md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight transition-all duration-700 text-white mb-6 ${delayedLoading ? "opacity-100 translate-y-0" : "opacity-75 translate-y-6"}`}>
           Daily AI Prompts to
           <span className="block text-white/80">Boost Your Creativity</span>
         </h1>
 
         {/* Subtext */}
-        <p className="text-base md:text-xl text-white/80 max-w-2xl mx-auto mb-10 leading-relaxed">
+        <p className={`text-base md:text-xl text-white/80 max-w-2xl mx-auto mb-10 leading-relaxed transition-all duration-500 ${delayedLoading ? "opacity-100 translate-y-0" : "opacity-75 translate-y-4"}`}>
           PromptVerse delivers curated, high-performing prompts for Google Gemini
           and ChatGPT — helping you create faster, smarter, and better.
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className={`flex flex-wrap justify-center gap-4 transition-all duration-500 ${delayedLoading ? "opacity-100 translate-y-0" : "opacity-75 translate-y-4"}`}>
           <Link
             href="/category/chatgpt"
             className="px-6 py-3 rounded-full bg-white text-black font-semibold shadow-lg hover:scale-105 transition-transform duration-200"

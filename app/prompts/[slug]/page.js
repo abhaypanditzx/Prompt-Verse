@@ -54,7 +54,7 @@ const PromptPage = () => {
     { path: `/prompts/${slug}`, title: slug },
   ];
   return (
-    <div className="p-4 md:p-6 bg-[#F8F9FA]">
+    <div className="p-4 md:p-6 min-h-screen bg-[#F8F9FA]">
       {loading ? <Loading/> : !prompt ?(
         <div className="flex flex-col items-center justify-center h-screen">
           <h1 className="text-3xl font-semibold text-center [font-family:var(--heading-font)]">Prompt not found</h1>
