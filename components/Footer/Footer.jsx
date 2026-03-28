@@ -1,23 +1,23 @@
 import React from "react";
 import Link from "next/link";
-import { Links1, Links2 } from "./footerData";
+import { footerLinks } from "./footerData";
 
 const Footer = () => {
   const socialLinks = [
     {
       name: "Facebook",
       icon: "/facebook.png",
-      path: "#",
+      path: "",
     },
     {
       name: "Instagram",
       icon: "/instagram.png",
-      path: "#",
+      path: "https://www.instagram.com/abhay_prompts/",
     },
     {
       name: "LinkedIn",
       icon: "/linkedin.png",
-      path: "#",
+      path: "https://www.linkedin.com/in/abhay-pandit-b9119b251/",
     },
   ]
   return (
@@ -56,7 +56,7 @@ const Footer = () => {
             Explore
           </h4>
           <ul className="space-y-2">
-            {Links1.map((link, index) => (
+            {footerLinks.product.map((link, index) => (
               <li key={index}>
                 <Link
                   href={link.path}
@@ -75,7 +75,7 @@ const Footer = () => {
             Help & Info
           </h4>
           <ul className="space-y-2">
-            {Links2.map((link, index) => (
+            {footerLinks.company.map((link, index) => (
               <li key={index}>
                 <Link
                   href={link.path}
@@ -87,29 +87,23 @@ const Footer = () => {
             ))}
           </ul>
         </div>
-
-        {/* Newsletter */}
+             {/* legal */}
         <div>
           <h4 className="text-lg font-semibold text-white mb-4">
-            Stay Inspired
+            Legal
           </h4>
-          <p className="text-white/80 text-sm mb-4">
-            Subscribe for the weekly best prompts.
-          </p>
-
-          <form className="flex flex-col sm:flex-row gap-2">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="border border-gray-300 placeholder:text-white/80 text-white/80 rounded-md px-3 py-2 text-sm w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <button
-              type="submit"
-              className="bg-blue-500 cursor-pointer text-white px-4 py-2 rounded-md text-sm hover:bg-blue-600 transition"
-            >
-              Subscribe
-            </button>
-          </form>
+          <ul className="space-y-2">
+            {footerLinks.legal.map((link, index) => (
+              <li key={index}>
+                <Link
+                  href={link.path}
+                  className="text-white/80 hover:text-blue-500 transition"
+                >
+                  {link.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
 
       </div>
