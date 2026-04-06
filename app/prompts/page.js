@@ -1,10 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import PromptLoadingCardDisplay from "../../components/promptLoadingCardDisplay";
+import PromptLoadingCardDisplay from "../../components/cards/promptLoadingCardDisplay";
 import dynamic from "next/dynamic";
-const  PromptCard = dynamic(()=> import( "../../components/PromptCard"),{
-  loading:()=> <PromptLoadingCardDisplay/>
-})
+const PromptCard = dynamic(() => import("../../components/cards/PromptCard"), {
+  loading: () => <PromptLoadingCardDisplay />,
+});
 
 const AdComponent = dynamic(() => import("../../components/AdComponent"), {
   ssr: false,
@@ -42,15 +42,15 @@ const Prompts = () => {
           Master the art of AI with our latest tutorials and prompt collections.
         </p>
       </div>
-      <AdComponent/>
+      <AdComponent />
       <div className="flex justify-start  flex-wrap gap-4 w-full ">
-        {loading ? (
-          Array(8).fill(0).map((_,i)=>(<PromptLoadingCardDisplay key={i}/>))
-        ) : (
-          prompts.map((prompt) => (
-            <PromptCard key={prompt._id} prompt={prompt} />
-          ))
-        )}
+        {loading
+          ? Array(8)
+              .fill(0)
+              .map((_, i) => <PromptLoadingCardDisplay key={i} />)
+          : prompts.map((prompt) => (
+              <PromptCard key={prompt._id} prompt={prompt} />
+            ))}
       </div>
     </div>
   );

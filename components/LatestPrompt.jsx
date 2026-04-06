@@ -1,10 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-const PromptLoadingCardDisplay = dynamic(()=> import("./promptLoadingCardDisplay"))
-const PromptCard =  dynamic(()=> import("./PromptCard"),{
-  loading:()=> <PromptLoadingCardDisplay/>
-})
+const PromptLoadingCardDisplay = dynamic(
+  () => import("./cards/promptLoadingCardDisplay"),
+);
+const PromptCard = dynamic(() => import("./cards/PromptCard"), {
+  loading: () => <PromptLoadingCardDisplay />,
+});
 const LatestPrompt = () => {
   const [loading, setLoading] = useState(true);
   const [prompts, setPrompts] = useState([]);
@@ -15,7 +17,6 @@ const LatestPrompt = () => {
       });
       const data = await res.json();
       setPrompts(data.prompts);
-      console.log(data.prompts);
     } catch (error) {
       console.log(error);
     } finally {
@@ -35,19 +36,16 @@ const LatestPrompt = () => {
           Master the art of AI with our latest tutorials and prompt collections.
         </p>
       </div>
-      
-      <div className="flex flex-wrap justify-start gap-6 w-full">
-        {loading ? (
-          Array(8).fill(0).map((_,i)=>(
-            <PromptLoadingCardDisplay key={i}/>
-          ))
-        ) : (
-          prompts?.slice(0,8).map((prompt) => (
-            <PromptCard key={prompt._id} prompt={prompt} />
-          ))
-        )}
-      </div>
 
+      <div className="flex flex-wrap justify-start gap-6 w-full">
+        {loading
+          ? Array(8)
+              .fill(0)
+              .map((_, i) => <PromptLoadingCardDisplay key={i} />)
+          : prompts
+              ?.slice(0, 8)
+              .map((prompt) => <PromptCard key={prompt._id} prompt={prompt} />)}
+      </div>
     </section>
   );
 };

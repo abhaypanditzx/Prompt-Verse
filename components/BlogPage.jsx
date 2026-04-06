@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from "react";
 const BlogPage = ({ blog, previousRoutes, handleCopyPrompt, copyPrompt }) => {
   return (
-    <div className="p-4 md:p-6   bg-[#F8F9FA]">
+    <div className=" mr-4 w-full">
       <div className="flex flex-col  max-w-4xl w-full">
         {/* previous routes */}
         <div className="flex flex-wrap items-center gap-2 text-gray-500 py-6">

@@ -6,6 +6,7 @@ import {Toaster} from "react-hot-toast"
 import { cookies } from "next/headers";
 import Script from "next/script";
 import Footer from "../components/Footer/Footer";
+import CategoriesSecton from "../components/Category/CategoriesSecton";
 
 <Script
   async
@@ -50,12 +51,10 @@ export default async function RootLayout({ children }) {
       <body
         className={`${inter.variable} ${poppins.variable} ${montserrat.variable}  antialiased`}
       >
-        {!token && <Navbar />}
+        <Navbar/>
         {children}
         <Toaster/>
-        {
-         !token && <Footer/>
-        }
+      <Footer/>
       </body>
     </html>
   );

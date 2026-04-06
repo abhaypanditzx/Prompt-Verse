@@ -27,10 +27,8 @@ export default function Home() {
       <section className="w-full">
         <Hero />
       </section>
-      <section className="w-full">
-        <CategoriesSecton/>
-      </section>
-        <LatestPrompt/>
+      <CategoriesSecton />
+      <LatestPrompt />
     </div>
   );
 }
