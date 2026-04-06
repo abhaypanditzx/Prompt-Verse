@@ -1,6 +1,6 @@
 "use client"
 import React, { useState,useEffect } from 'react'
-import BlogCard from './BlogCard'
+import BlogCard from './cards/BlogCard'
 const AllBlogs = () => {
     const [blogs,setBlogs]=   useState([])
     const fetchBlog =  async()=>{

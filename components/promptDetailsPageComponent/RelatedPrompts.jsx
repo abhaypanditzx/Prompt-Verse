@@ -5,7 +5,6 @@ import React, { useEffect, useState } from "react";
 
 const RelatedPrompts = () => {
   const [prompts, setPrompts] = useState([]);
-  const [openPrompt, setOpenPrompt] = useState("");
   const [loading, setLoading] = useState(false);
   const getPrompts = async () => {
     setLoading(true);
@@ -19,7 +18,7 @@ const RelatedPrompts = () => {
   }, []);
 
   return (
-    <div className="bg-white felx flex-col p-4 rounded-xl ">
+    <div className="bg-white  h-fit felx flex-col p-4 sticky mt-20 border border-gray-200  top-20 right-5 rounded-xl ">
       <div className="md:pb-8 pb-4 border-b   border-gray-200">
         <h1 className="md:text-3xl text-2xl heading-font font-bold ">
           Related Prompts

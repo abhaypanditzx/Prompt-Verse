@@ -52,17 +52,17 @@ const PromptPage = () => {
     setTimeout(() => setCopyPrompt(false), 2000);
   };
 
-  if (loading) return <Loading />;
+  if (loading) return <div className="flex items-center justify-center min-h-screen"><Loading /></div>;
 
   if (!blog)
     return (
-      <div className="flex items-center justify-center h-screen">
+      <div className="flex items-center justify-center min-h-screen">
         <h1 className="text-3xl font-semibold">Blog not found</h1>
       </div>
     );
 
   return (
-   <div className="flex   flex-col md:flex-row">
+   <div className="flex  min-h-screen  flex-col md:flex-row p-4 bg-[#F8F9FA]">
      <BlogPage previousRoutes={previousRoutes} blog={blog} handleCopyPrompt={handleCopyPrompt} copyPrompt={copyPrompt}/>
      <RelatedPrompts/>
    </div>

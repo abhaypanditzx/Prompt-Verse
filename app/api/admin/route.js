@@ -12,7 +12,7 @@ export async function POST(req) {
     return Response.json({ message: "Unauthorized" }, { status: 401 });
   }
   const token =  jsonwebtoken.sign({email}, process.env.JWT_SECRET, {
-    expiresIn: "1d",
+    expiresIn: "30d",
   });
 
 const cookiesStore =  await cookies();
