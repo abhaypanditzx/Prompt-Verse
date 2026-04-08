@@ -11,7 +11,6 @@ const AllBlogs = () => {
     useEffect(() => {
         fetchBlog()
     }, [])
-    console.log(blogs)
   return (
     <div>
         <h1 className='text-2xl font-bold text-center my-4'>All Blogs</h1>

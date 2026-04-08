@@ -2,20 +2,22 @@ import mongoose from "mongoose";
 
 const blogSchema = new mongoose.Schema(
   {
-    title: String,
+    title: { type: String, required: true },
     slug: { type: String },
-    description: String,
+    description: { type: String },
     coverImage: String,
-    category: String,
+    category: { type: String },
+
     blocks: [
       {
-        heading: String,
+        heading: { type: String },
         image: String,
-        prompt: String,
+        explanation: { type: String, default: "" },
+        prompt: { type: String },
       },
     ],
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 
 export default mongoose.models.Blog || mongoose.model("Blog", blogSchema);

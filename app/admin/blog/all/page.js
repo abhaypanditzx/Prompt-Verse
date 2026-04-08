@@ -7,7 +7,6 @@ const AllBlogs = () => {
     const [blogs,setBlogs]=  useState([]);
     const [loading,setLoading] = useState(true);
     const [OptionsVisible,setOptionsVisible] = useState(null);
-    console.log(OptionsVisible)
 const blogImageStyle = {
   overflow: "hidden",
   borderRadius: "100%",
@@ -31,7 +30,6 @@ try {
         try {
             const res =  await fetch("/api/blog/all");
             const data = await res.json();
-            console.log(data)
             if(data.success){
                 setBlogs(data.blogs);
             }

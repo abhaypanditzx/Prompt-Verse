@@ -8,7 +8,7 @@ export default function AddBlogForm() {
     description: "",
     category: "",
     coverImage: null,
-    blocks: [{ heading: "", prompt: "", image: null }],
+    blocks: [{ heading: "", prompt: "", explanation: "", image: null }],
   });
   const changeCoverImage = (e) => {
     setPreviewCoverImage(URL.createObjectURL(e.target.files[0]));
@@ -31,7 +31,7 @@ export default function AddBlogForm() {
   const addBlock = () => {
     setBlogData({
       ...blogData,
-      blocks: [...blogData.blocks, { heading: "", prompt: "", image: null }],
+      blocks: [...blogData.blocks, { heading: "", prompt: "", explanation: "", image: null }],
     });
   };
   const handleSubmit = async (e) => {
@@ -50,6 +50,7 @@ export default function AddBlogForm() {
         blogData.blocks.map((b) => ({
           heading: b.heading,
           prompt: b.prompt,
+          explanation: b.explanation,
         })),
       ),
     );
@@ -146,6 +147,12 @@ export default function AddBlogForm() {
             onChange={(e) =>
               handleBlockChange(index, "heading", e.target.value)
             }
+          />
+
+          <textarea
+            placeholder="Detailed Explanation (Required for AdSense thick content)"
+            className="border-gray-800 border  w-full p-2 resize-none h-24"
+            onChange={(e) => handleBlockChange(index, "explanation", e.target.value)}
           />
 
           <textarea

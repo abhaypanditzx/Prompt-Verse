@@ -5,28 +5,64 @@ import React, { useEffect, useState } from "react";
 
 const RelatedPrompts = () => {
   const [prompts, setPrompts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const getPrompts = async () => {
-    setLoading(true);
+    try {
     const response = await fetch("/api/prompt");
     const data = await response.json();
     setPrompts(data.prompts || []);
-    setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }finally{
+      setLoading(false);
+    }
+  
   };
   useEffect(() => {
     getPrompts();
   }, []);
 
-  return (
-    <div className="bg-white  h-fit felx flex-col p-4 sticky mt-20 border border-gray-200  top-20 right-5 rounded-xl ">
+
+  if (loading){
+    return (
+      <div className="bg-white  h-fit felx flex-col p-4 sticky mt-10 border border-gray-200  top-20 right-5 rounded-xl ">
       <div className="md:pb-8 pb-4 border-b   border-gray-200">
         <h1 className="md:text-3xl text-2xl heading-font font-bold ">
           Related Prompts
         </h1>
       </div>
       <div>
-        {prompts.slice(0, 4).map((prompt) => {
-          return (
+       {
+        Array.from({length:4}).map((_,i)=>(
+            <div key={i} className="flex flex-row gap-3 py-4 animate-pulse">
+            {/* image skeleton */}
+            <div className="h-12 w-14 rounded-lg bg-gray-200" />
+
+            <div className="flex flex-col gap-2 w-full">
+              {/* title skeleton */}
+              <div className="h-4 w-3/4 bg-gray-200 rounded" />
+
+              {/* category skeleton */}
+              <div className="h-3 w-20 bg-gray-200 rounded" />
+            </div>
+          </div>
+        ))
+       }
+          </div>
+          </div>
+    )
+  }
+  return (
+    <div className="bg-white  h-fit felx flex-col p-4 sticky mt-10 border border-gray-200  top-20 right-5 rounded-xl ">
+      <div className="md:pb-8 pb-4 border-b   border-gray-200">
+        <h1 className="md:text-3xl text-2xl heading-font font-bold ">
+          Related Prompts
+        </h1>
+      </div>
+      <div>
+        {prompts.slice(0, 4).map((prompt,i) => (
+      
+           (
             <Link
               href={`/prompts/${prompt.slug}`}
               key={prompt._id}
@@ -48,8 +84,8 @@ const RelatedPrompts = () => {
               </p>
             </div>
             </Link>
-          );
-        })}
+          )
+        ))}
       </div>
     </div>
   );

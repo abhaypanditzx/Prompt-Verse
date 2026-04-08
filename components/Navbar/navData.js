@@ -3,7 +3,6 @@ import {
   Home,
   Info,
   BookImage,
-  Phone,
 } from "lucide-react";
 export const navLinks = [
   {
