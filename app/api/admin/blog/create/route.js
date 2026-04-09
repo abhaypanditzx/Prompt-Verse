@@ -46,6 +46,7 @@ export async function POST(req) {
       updatedBlocks.push({
         heading: block.heading,
         prompt: block.prompt,
+        explanation: block.explanation,
         image: imageUrl
       });
     }

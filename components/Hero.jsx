@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Sparkles, ArrowRight } from "lucide-react";
+import SearchBar from "./SearchBar";
 
 const Hero = () => {
   const [delayedLoading, setDelayedLoading] = useState(false);
@@ -12,7 +13,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="relative w-full min-h-screen flex items-center justify-center px-4 md:px-8 lg:px-16 overflow-hidden">
+    <div className="relative w-full min-h-screen  pt-10 sm:pt-20 flex items-center justify-center px-4 md:px-8 lg:px-16 overflow-hidden">
       {/* ✅ IMPROVED: Gradient background with better colors */}
       <div className="absolute inset-0 bg-linear-to-br from-slate-950 via-blue-950 to-slate-900"></div>
 
@@ -21,7 +22,10 @@ const Hero = () => {
         {/* Top glow */}
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-screen opacity-20 blur-3xl animate-pulse"></div>
         {/* Bottom glow */}
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-indigo-500 rounded-full mix-blend-screen opacity-20 blur-3xl animate-pulse" style={{ animationDelay: "1s" }}></div>
+        <div
+          className="absolute -bottom-40 -left-40 w-80 h-80 bg-indigo-500 rounded-full mix-blend-screen opacity-20 blur-3xl animate-pulse"
+          style={{ animationDelay: "1s" }}
+        ></div>
       </div>
 
       {/* ✅ IMPROVED: Subtle grid pattern for visual interest */}
@@ -59,7 +63,7 @@ const Hero = () => {
           </span>
 
           {/* Subheadline with gradient */}
-          <span className="block text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 via-blue-300 to-cyan-300 bg-clip-text text-transparent">
+          <span className="block text-2xl sm:text-3xl md:text-4xl font-bold bg-linear-to-r from-blue-400 via-blue-300 to-cyan-300 bg-clip-text text-transparent">
             Into AI Masterpieces
           </span>
         </h1>
@@ -80,6 +84,8 @@ const Hero = () => {
           <span className="text-blue-300"> smarter</span>, and
           <span className="text-blue-300"> better</span>.
         </p>
+        {/* search bar  */}
+        <SearchBar delayedLoading={delayedLoading}/>
 
         {/* ✅ IMPROVED: Better CTA buttons with hierarchy */}
         <div
@@ -93,7 +99,7 @@ const Hero = () => {
           {/* Primary CTA */}
           <Link
             href="/category/chatgpt"
-            className="group relative inline-flex items-center justify-center px-8 py-4 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold text-base shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95 whitespace-nowrap"
+            className="group relative inline-flex items-center justify-center px-8 py-4 rounded-full bg-linear-to-r from-blue-500 to-cyan-500 text-white font-bold text-base shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95 whitespace-nowrap"
           >
             {/* Button content */}
             <span className="flex items-center gap-2">
@@ -105,7 +111,7 @@ const Hero = () => {
             </span>
 
             {/* Hover glow effect */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300 -z-10"></div>
+            <div className="absolute inset-0 rounded-full bg-linear-to-r from-blue-500 to-cyan-500 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300 -z-10"></div>
           </Link>
 
           {/* Secondary CTA */}
@@ -130,7 +136,7 @@ const Hero = () => {
           }`}
           style={{ transitionDelay: delayedLoading ? "300ms" : "0ms" }}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 sm:gap-8">
+          <div className=" grid-cols-1 hidden sm:grid sm:grid-cols-3 gap-4 p-4 sm:gap-8">
             {/* Stat 1 */}
             <div className="text-center">
               <p className="text-3xl md:text-4xl font-bold text-blue-400 mb-2">
@@ -146,9 +152,7 @@ const Hero = () => {
               <p className="text-3xl md:text-4xl font-bold text-blue-400 mb-2">
                 99%
               </p>
-              <p className="text-sm text-white/60 font-medium">
-                Success Rate
-              </p>
+              <p className="text-sm text-white/60 font-medium">Success Rate</p>
             </div>
 
             {/* Stat 3 */}
@@ -156,9 +160,7 @@ const Hero = () => {
               <p className="text-3xl md:text-4xl font-bold text-blue-400 mb-2">
                 500+
               </p>
-              <p className="text-sm text-white/60 font-medium">
-                Active Users
-              </p>
+              <p className="text-sm text-white/60 font-medium">Active Users</p>
             </div>
           </div>
         </div>

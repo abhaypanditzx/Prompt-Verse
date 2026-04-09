@@ -7,14 +7,14 @@ export async function GET(req, { params }) {
   try {
     await connectDB();
     const blog = await Blog?.findOne({ slug })
-    console.log("blog we got :",blog);
     if (!blog) {
-      return NextResponse.json({ message: "Blog not found" }, { status: 404 });
+      return NextResponse.json({ message: "Blog not found",success:false }, { status: 404 });
     }
-    return NextResponse.json(blog);
+    return NextResponse.json({success:true,blog});
   } catch (error) {
+    console.log(error);
     return NextResponse.json(
-      { message: "Internal server error" },
+      { message: "Internal server error",success:false },
       { status: 500 },
     );
   }

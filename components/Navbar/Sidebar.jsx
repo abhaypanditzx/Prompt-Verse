@@ -1,8 +1,9 @@
 'use client'
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { navLinks } from "./navData";
 const Sidebar = ({ openSidebar,setOpenSidebar}) => {
+
   return (
     <div
       className={`fixed sm:hidden h-screen pt-16 bg-white w-[80%] right-0 top-0  transition-transform duration-300 ${openSidebar ? "translate-x-0" : "translate-x-full"}`}

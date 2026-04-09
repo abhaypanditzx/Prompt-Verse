@@ -1,8 +1,13 @@
 "use client";
 import { Check, ChevronRight, Copy } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import React from "react";
 const BlogPage = ({ blog, previousRoutes, handleCopyPrompt, copyPrompt }) => {
+
+
+
+
   return (
     <div className=" mr-4 w-full">
       <div className="flex flex-col  max-w-4xl w-full">
@@ -60,13 +65,23 @@ const BlogPage = ({ blog, previousRoutes, handleCopyPrompt, copyPrompt }) => {
                 {block.heading}
               </h2>
 
+              {/* textual explanation to satisfy AdSense thick content */}
+              {block.explanation && (
+                <div className="text-gray-700 mb-5 leading-relaxed text-base whitespace-pre-wrap">
+                  {block.explanation}
+                </div>
+              )}
+
               {/* block image */}
               {block.image && (
-                <div className="relative w-56   rounded-lg overflow-hidden">
-                  <img
+                <div className="relative w-full max-w-xl aspect-[4/5] rounded-lg overflow-hidden">
+                  <Image
                     src={block.image}
                     alt={block.heading}
-                    className="object-cover h-full w-full"
+                    fill
+                    sizes="(max-width:768px) 100vw, 600px"
+                    quality={100}
+                    className="object-cover"
                   />
                 </div>
               )}

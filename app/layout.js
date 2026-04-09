@@ -6,7 +6,7 @@ import {Toaster} from "react-hot-toast"
 import { cookies } from "next/headers";
 import Script from "next/script";
 import Footer from "../components/Footer/Footer";
-import CategoriesSecton from "../components/Category/CategoriesSecton";
+import AdminMobileSidebar from "../components/admin/AdminMobileSidebar";
 
 <Script
   async
@@ -51,7 +51,9 @@ export default async function RootLayout({ children }) {
       <body
         className={`${inter.variable} ${poppins.variable} ${montserrat.variable}  antialiased`}
       >
-        <Navbar/>
+        {
+          token? <AdminMobileSidebar/> : <Navbar/>
+        }
         {children}
         <Toaster/>
       <Footer/>
