@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 const PromptLoadingCardDisplay = dynamic(
-  () => import("./cards/promptLoadingCardDisplay"),
+  () => import("./prompt/promptLoadingCardDisplay"),
 );
-const PromptCard = dynamic(() => import("./cards/PromptCard"), {
+const PromptCard = dynamic(() => import("./prompt/PromptCard"), {
   loading: () => <PromptLoadingCardDisplay />,
 });
 const LatestPrompt = () => {

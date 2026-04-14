@@ -1,6 +1,6 @@
 import React from 'react'
 
-const categoryCard = ({category,setOpenMenu,openMenu,handleDelete}) => {
+const CategoryCard = ({category,setOpenMenu,openMenu,handleDelete}) => {
   return (
     <div
             key={category._id}
@@ -49,4 +49,4 @@ const categoryCard = ({category,setOpenMenu,openMenu,handleDelete}) => {
   )
 }
 
-export default categoryCard
+export default CategoryCard
