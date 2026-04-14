@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import PromptCard from "./PromptCard";
-import Loading from "../Loading";
+import Loading from "../loadings/Loading";
 const AllPrompts = () => {
   const [openMenu, setOpenMenu] = useState(null);
   const [prompts, setPrompts] = useState([]);

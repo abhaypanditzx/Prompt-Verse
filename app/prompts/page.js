@@ -1,12 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import PromptLoadingCardDisplay from "../../components/cards/promptLoadingCardDisplay";
+import PromptLoadingCardDisplay from "../../components/prompt/promptLoadingCardDisplay";
 import dynamic from "next/dynamic";
-const PromptCard = dynamic(() => import("../../components/cards/PromptCard"), {
+const PromptCard = dynamic(() => import("../../components/prompt/PromptCard"), {
   loading: () => <PromptLoadingCardDisplay />,
 });
 
-const AdComponent = dynamic(() => import("../../components/AdComponent"), {
+const AdComponent = dynamic(() => import("../../components/adsense/AdComponent"), {
   ssr: false,
 });
 

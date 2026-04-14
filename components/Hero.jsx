@@ -85,9 +85,9 @@ const Hero = () => {
           <span className="text-blue-300"> better</span>.
         </p>
         {/* search bar  */}
-        <SearchBar delayedLoading={delayedLoading}/>
 
         {/* ✅ IMPROVED: Better CTA buttons with hierarchy */}
+        <SearchBar delayedLoading={delayedLoading}/>
         <div
           className={`flex flex-col sm:flex-row justify-center items-center gap-4 transition-all duration-700 ${
             delayedLoading

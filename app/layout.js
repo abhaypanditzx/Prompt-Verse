@@ -7,6 +7,7 @@ import { cookies } from "next/headers";
 import Script from "next/script";
 import Footer from "../components/Footer/Footer";
 import AdminMobileSidebar from "../components/admin/AdminMobileSidebar";
+import GlobalContextProvider from "../context/GlobalContext";
 
 <Script
   async
@@ -51,11 +52,13 @@ export default async function RootLayout({ children }) {
       <body
         className={`${inter.variable} ${poppins.variable} ${montserrat.variable}  antialiased`}
       >
-        {
-          token? <AdminMobileSidebar/> : <Navbar/>
-        }
-        {children}
-        <Toaster/>
+        <GlobalContextProvider>
+          {
+            token? <AdminMobileSidebar/> : <Navbar/>
+          }
+          {children}
+          <Toaster/>
+        </GlobalContextProvider>
       <Footer/>
       </body>
     </html>

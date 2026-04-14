@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Loading from "../Loading";
+import Loading from "../loadings/Loading";
 import CategoryCard from "./categoryCard";
 
 const AllCategories = () => {
@@ -14,7 +14,7 @@ const AllCategories = () => {
     const response = await fetch("/api/category");
     const data = await response.json();
     setCategories(data.categories || []);
-    console.log(data.categories)
+    console.log(data.categories);
     setLoading(false);
   };
 

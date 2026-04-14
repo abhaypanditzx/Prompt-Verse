@@ -25,7 +25,7 @@ const CategoriesSecton = () => {
   return (
 
 
-  <div className={`flex flex-row bg-white/60 backdrop-blur-md w-full gap-6 p-4 md:p-8 sticky md:top-15 top-20 z-40 `}>
+  <div className={`flex flex-row bg-white/60 backdrop-blur-md w-full gap-6 p-4 md:p-6 sticky md:top-0  top-20 z-40 `}>
     {
        categories.map((category) => (
         <Link className="bg-white rounded-full shadow-md py-2 px-6 font-semibold border-gray-200 hover:scale-110    transform-all duration-300 " key={category._id} href={`/category/${category.slug}`}>

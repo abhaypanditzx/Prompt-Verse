@@ -1,4 +1,4 @@
-import AllBlogs from "../../../components/AllBlogs";
+import AllBlogs from "../../../components/blog/AllBlogs";
 
 const page = () => {
   return (

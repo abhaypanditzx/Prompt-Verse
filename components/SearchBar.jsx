@@ -1,30 +1,34 @@
+"use client";
 import React from "react";
 import { Search } from "lucide-react";
-
+import { useGlobalContext } from "../context/GlobalContext";
 const SearchBar = ({ delayedLoading }) => {
+  const { handleSearch, searchParams } = useGlobalContext();
+const {setSearchQuery,searchQuery} =searchParams;
   return (
-    <div
-      className={`transition-all duration-700 mb-10 ${
-        delayedLoading
-          ? "opacity-100 translate-y-0"
-          : "opacity-0 translate-y-6"
-      }`}
+    <form
+      onSubmit={handleSearch}
+      className={`transition-all  group duration-700 mb-10 
+       ${
+         delayedLoading
+           ? "opacity-100 translate-y-0"
+           : "opacity-0 translate-y-6"
+       }`}
       style={{ transitionDelay: delayedLoading ? "100ms" : "0ms" }}
     >
-      <div className="relative w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-full overflow-hidden">
-        
+      <div className="relative flex flex-row w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-full overflow-hidden">
+        <div className="flex items-center justify-center pl-5">
+          <Search size={24} className="text-white" />
+        </div>
         <input
           type="text"
+          value={searchQuery}
+          onChange={(e) =>setSearchQuery(e.target.value)}
           placeholder="Search AI prompts..."
-          className="w-full py-4 pl-5 pr-32 bg-transparent outline-none text-white placeholder:text-white/60"
+          className="w-full py-4  bg-transparent px-2  md:px-5 outline-none text-white placeholder:text-white/60"
         />
-
-        <button className="absolute right-0 top-0 h-full px-6 sm:px-10 flex items-center justify-center bg-linear-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 active:scale-95">
-          <Search size={24} className="text-white" />
-        </button>
-
       </div>
-    </div>
+    </form>
   );
 };
 

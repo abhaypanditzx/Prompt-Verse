@@ -1,8 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
-import PromptCard from "../../../components/cards/PromptCard";
-import PromptLoadingCardDisplay from "../../../components/cards/promptLoadingCardDisplay";
+import PromptCard from "../../../components/prompt/PromptCard";
+import PromptLoadingCardDisplay from "../../../components/prompt/promptLoadingCardDisplay";
 const CategoryPage = () => {
   const [specificCategory, setSpecificCategory] = useState([]);
   const [loading, setLoading] = useState(false);

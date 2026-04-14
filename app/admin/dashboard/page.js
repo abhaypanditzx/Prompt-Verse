@@ -1,12 +1,12 @@
-import React from 'react'
-import Loading from '../../../components/Loading'
+import React from "react";
+import Loading from "../../../components/loadings/Loading";
 
 function Dashboard() {
   return (
     <div>
-      <Loading /> 
+      <Loading />
     </div>
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;
